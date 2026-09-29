@@ -1,0 +1,12 @@
+{
+  "name": "tabata",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Tabata interval timer: iOS app (SwiftUI) and installable web app (PWA).",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

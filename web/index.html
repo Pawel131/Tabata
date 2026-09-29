@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Tabata Interval Timer</title>
+<meta name="description" content="Tabata interval timer with adjustable work, rest, rounds and sets, voice and beep cues, and workout progress tracking.">
+<meta name="theme-color" content="#F2F3EF" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0F1114" media="(prefers-color-scheme: dark)">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Tabata">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Barlow:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="app timer-tab" id="app">
+  <section class="view" id="view-timer" aria-labelledby="t-title">
+    <h1 id="t-title">Tabata</h1>
+    <div class="hero" aria-live="polite">
+      <div class="total" id="total">4:00</div>
+      <div class="desc" id="desc">8 rounds · 20s work / 10s rest</div>
+      <div class="timeline" id="timeline" aria-hidden="true"></div>
+    </div>
+
+    <div>
+      <p class="eyebrow">Presets</p>
+      <div class="presets" id="presets"></div>
+    </div>
+
+    <div>
+      <p class="eyebrow">Intervals</p>
+      <div class="group" id="g-intervals"></div>
+    </div>
+
+    <div>
+      <p class="eyebrow">Rounds</p>
+      <div class="group" id="g-rounds"></div>
+      <p class="note">A round is one work interval followed by a rest. Sets repeat all the rounds.</p>
+    </div>
+
+    <div>
+      <p class="eyebrow">Cues</p>
+      <div class="group" id="g-cues"></div>
+      <p class="note">On iPhone, beeps follow the ring/silent switch. Keep the app open during a workout.</p>
+    </div>
+  </section>
+
+  <section class="view" id="view-progress" hidden aria-labelledby="p-title">
+    <div class="p-head">
+      <h1 id="p-title">Progress</h1>
+      <div class="p-actions">
+        <button type="button" class="ghost" id="export">Export</button>
+        <button type="button" class="ghost" id="import">Import</button>
+        <input type="file" id="import-file" accept="application/json,.json" hidden>
+      </div>
+    </div>
+    <p class="sync" id="sync" aria-live="polite">Workouts are saved on this device.</p>
+    <div id="progress-body"></div>
+  </section>
+</div>
+
+<button class="start" id="start" type="button">Start workout</button>
+
+<nav class="tabbar" role="tablist" aria-label="Sections">
+  <button role="tab" id="tab-timer" aria-selected="true" type="button">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2.5M9.5 2h5M12 2v3"/></svg>
+    Timer
+  </button>
+  <button role="tab" id="tab-progress" aria-selected="false" type="button">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 20V11M12 20V5M19 20v-6"/></svg>
+    Progress
+  </button>
+</nav>
+
+<div class="workout" id="workout" hidden role="dialog" aria-modal="true" aria-label="Workout"></div>
+<script src="app.js"></script>
+</body>
+</html>
